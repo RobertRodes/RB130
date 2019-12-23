@@ -1,4 +1,4 @@
-def reduce2(arr, acc = nil)
+def reduce_old(arr, acc = nil)
   counter = acc.nil? ? 1 : 0
   acc ||= arr[0]
   loop do
