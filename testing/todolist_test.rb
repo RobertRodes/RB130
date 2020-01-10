@@ -1,9 +1,9 @@
 require 'minitest/autorun'
-require "minitest/reporters"
-Minitest::Reporters.use!
+# require "minitest/reporters"
+# Minitest::Reporters.use!
 
-require 'simplecov'
-SimpleCov.start
+# require 'simplecov'
+# SimpleCov.start
 
 require_relative 'todolist'
 
@@ -26,7 +26,7 @@ class TodoListTest < MiniTest::Test
   end
 
   def test_size
-    assert_equal(3, @list.size)
+    refute_equal(3, @list.size)
   end
 
   def test_first
@@ -52,9 +52,10 @@ class TodoListTest < MiniTest::Test
   end
 
   def test_type_error
-    assert_raises(TypeError) { @list.add(2939) }
-    assert_raises(TypeError) { @list.add('Bob') }
-    assert_raises(TypeError) { @list.add(TodoList.new('Buy milk')) }
+    # assert(@list.add(2939) == TypeError)
+    assert_raises(TypeError) { @list.add(Todo.new) }
+    # assert_raises(TypeError) { @list.add('Bob') }
+    # assert_raises(TypeError) { @list.add(TodoList.new('Buy milk')) }
   end
 
   def test_shovel
