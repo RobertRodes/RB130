@@ -266,10 +266,10 @@ end
 # p game.best_hand
 # puts
 
-game = Poker.new([%w(KC KD 7S 7C 3D), %w(KS KH 8H 8D 2H), %w(3H AD 4D 8C 4C)])
-p game.hands.map(&:original_value)
-p game.best_hand
-puts
+# game = Poker.new([%w(KC KD 7S 7C 3D), %w(KS KH 8H 8D 2H), %w(3H AD 4D 8C 4C)])
+# p game.hands.map(&:original_value)
+# p game.best_hand
+# puts
 
 # three_of_4 = %w(4S 5H 4S 8D 4H)
 # straight_to_5 = %w(4S AH 3S 2D 5H)
