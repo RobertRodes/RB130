@@ -89,7 +89,6 @@ class TodoList
   end
 
   def mark_all_done
-    puts block_given?
     each(&:done!)
   end
 
@@ -244,9 +243,9 @@ list << todo3                   # adds todo3 to end of list, returns list
 #   puts todo                   # calls Todo#to_s
 # end
 
-# # select
+# select
 # list.mark_done_at(2)
-# puts list.select { |todo| todo.done? }    # you need to implement this method
+# puts list.select { |todo| todo.done? }
 
 # # find_by_title
 # puts list.find_by_title('Clean room')
@@ -267,9 +266,9 @@ list << todo3                   # adds todo3 to end of list, returns list
 # puts list
 
 # mark_all_done
-list.mark_all_done
-puts list
+# list.mark_all_done
+# puts list
 
 # mark_all_undone
-list.mark_all_undone
-puts list
+# list.mark_all_undone
+# puts list
