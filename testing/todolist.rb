@@ -28,16 +28,12 @@ class Todo
 end
 
 class TodoList
-  attr_accessor :title
+  attr_accessor :title, :todos
 
   def initialize(title)
     @title = title
     @todos = []
   end
-
-  # def <<(list_item)
-  #   add(list_item)
-  # end
 
   def add(list_item)
     raise TypeError, 'Can only add Todo objects' unless list_item.class == Todo 
@@ -71,8 +67,6 @@ class TodoList
   end
 
   def find_by_title(todo_title)
-    # @todos.each { |el| return el if el.title == todo_title }
-    # nil
     select { |el| el.title == todo_title }.first
   end
 
@@ -89,7 +83,6 @@ class TodoList
   end
 
   def mark_all_done
-    puts block_given?
     each(&:done!)
   end
 
@@ -101,6 +94,12 @@ class TodoList
     todo = find_by_title(item_title)
     raise ArgumentError, "Todo item '#{item_title}' not found" if todo.nil?
     todo.done!
+  end
+
+  def mark_undone(item_title)
+    todo = find_by_title(item_title)
+    raise ArgumentError, "Todo item '#{item_title}' not found" if todo.nil?
+    todo.undone!
   end
 
   def mark_done_at(idx)
@@ -252,24 +251,25 @@ list << todo3                   # adds todo3 to end of list, returns list
 # puts list.find_by_title('Clean room')
 # p list.find_by_title('Bob')
 
-# # all_done
-# list.mark_done_at(1)
-# list.mark_done_at(2)
+# all_done
+# list.done!
+# list.mark_undone_at(1)
 # puts list.all_done
 
-# # all_not_done
+# all_not_done
+# list.done!
 # list.mark_undone_at(1)
 # puts list.all_undone
 
 # # mark_done
-# # list.mark_done('clean room') # should respond "Todo item 'clean room' not found (ArgumentError)"
+# list.mark_done('clean room') # should respond "Todo item 'clean room' not found (ArgumentError)"
 # list.mark_done('Clean room')
 # puts list
 
 # mark_all_done
-list.mark_all_done
-puts list
+# list.mark_all_done
+# puts list
 
 # mark_all_undone
-list.mark_all_undone
-puts list
+# list.mark_all_undone
+# puts list
